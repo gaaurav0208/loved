@@ -28,7 +28,7 @@ function AutoInvestmentsIndicators(props) {
   };
 
   useEffect(() => {
-    props.getDataUsingSaga('https://raw.githubusercontent.com/gaaurav0208/loved/master/js/mock/indicators.json');
+    props.getDataUsingSaga('https://raw.githubusercontent.com/gaaurav0208/loved/master/js/mocks/indicators.json');
   }, []);
 
   return (
