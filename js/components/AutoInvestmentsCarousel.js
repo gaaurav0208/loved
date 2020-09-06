@@ -5,13 +5,18 @@ import {dataList} from './mock/dataMock';
 import {Icon} from 'react-native-elements';
 import {styles} from './Themes/Styles';
 import Fonts from './Themes/Fonts';
+import {connect} from 'react-redux';
+import {getDataUsingSaga} from '../../js/actions/index';
 
-export default function AutoInvestmentsCarousel(props) {
+
+function AutoInvestmentsCarousel(props) {
   const [carousel, setCarousel] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselItems = dataList;
 
   useEffect(() => {
+    props.getDataUsingSaga('https://raw.githubusercontent.com/gaaurav0208/loved/master/js/mocks/users.json');
+
     carouselItems.push({
       title: 'Add',
       type: 'empty',
@@ -100,17 +105,27 @@ export default function AutoInvestmentsCarousel(props) {
         ref={(c) => {
           setCarousel(c);
         }}
-        data={carouselItems}
+        data={users}
         renderItem={renderItem}
         sliderWidth={610}
         itemWidth={150}
         onSnapToItem={index => {
           if (index < carouselItems.length - 1) {
             setActiveIndex(index);
-            props.changeSettings(index);
+            props.changeSettings(users[index].username);
           }
         }}
       />
     </View>
   );
 };
+
+const mapsStateToProps = (state) => {
+  return {
+    users: state.remoteUsers.slice(0, 10),
+  };
+};
+
+export default connect(mapsStateToProps, {getDataUsingSaga})(
+  AutoInvestmentsIndicators,
+);

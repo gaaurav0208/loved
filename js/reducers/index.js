@@ -1,8 +1,9 @@
-import { ADD_ARTICLE, REMOVE_ARTICLE, DATA_LOADED } from "../constants/action-types";
+import { ADD_ARTICLE, REMOVE_ARTICLE, DATA_LOADED, USERS_DATA_LOADED } from "../constants/action-types";
 
 const initialState = {
   articles: [],
-  remoteIndicators: []
+  remoteIndicators: [],
+  remoteUsers: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -23,6 +24,13 @@ function rootReducer(state = initialState, action) {
       remoteIndicators: state.remoteIndicators.concat(action.payload)
     })
   }
+  if (action.type === USERS_DATA_LOADED) {
+    return Object.assign({}, state, {
+      remoteUsers: state.remoteUsers.concat(action.payload)
+    })
+  }
+
+
    return state;
 };
 

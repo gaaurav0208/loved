@@ -1,0 +1,46 @@
+{
+  "data": {
+    "title": "Halie H",
+    "items": [
+      {
+        "title": "Cash",
+        "amount": "$50",
+        "nextTransferDate": "July 2",
+        "type": "Weekly"
+      },
+      {
+        "title": "College",
+        "amount": "$50",
+        "nextTransferDate": "July 2",
+        "type": "Weekly"
+      },
+      {
+        "title": "Cash",
+        "amount": "$50",
+        "nextTransferDate": "July 2",
+        "type": "Weekly"
+      }
+    ],
+    "portfolio": {
+      "type": "Weekly",
+      "nextTransferDate": "July 2",
+      "items": [
+        {
+          "title": "Apple",
+          "balance": "$5",
+          "status": "Off"
+        },
+        {
+          "title": "Apple",
+          "balance": "$5",
+          "status": "Off"
+        },
+        {
+          "title": "Apple",
+          "balance": "$5",
+          "status": "Off"
+        }
+      ]
+    }
+  }
+}

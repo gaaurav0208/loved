@@ -1,0 +1,46 @@
+{
+  "data": {
+    "title": "Jolie H",
+    "items": [
+      {
+        "title": "Cash",
+        "amount": "$80",
+        "nextTransferDate": "July 2",
+        "type": "Weekly"
+      },
+      {
+        "title": "Cash",
+        "amount": "$80",
+        "nextTransferDate": "July 2",
+        "type": "Weekly"
+      },
+      {
+        "title": "Cash",
+        "amount": "$80",
+        "nextTransferDate": "July 2",
+        "type": "Weekly"
+      }
+    ],
+    "portfolio": {
+      "type": "Weekly",
+      "nextTransferDate": "July 2",
+      "items": [
+        {
+          "title": "Apple",
+          "balance": "$10",
+          "status": "Off"
+        },
+        {
+          "title": "Apple",
+          "balance": "$10",
+          "status": "Off"
+        },
+        {
+          "title": "Apple",
+          "balance": "$10",
+          "status": "Off"
+        }
+      ]
+    }
+  }
+}
