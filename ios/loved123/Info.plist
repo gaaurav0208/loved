@@ -92,6 +92,30 @@
 		<string>Raleway-Regular.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>silka-regular-webfont.ttf</string>
+		<string>silka-regular-webfont.woff</string>
+		<string>silka-regular-webfont.woff2</string>
+		<string>silka-regularitalic-webfont.ttf</string>
+		<string>silka-regularitalic-webfont.woff</string>
+		<string>silka-regularitalic-webfont.woff2</string>
+		<string>Silka-Black.otf</string>
+		<string>Silka-BlackItalic.otf</string>
+		<string>Silka-Bold.otf</string>
+		<string>Silka-BoldItalic.otf</string>
+		<string>Silka-ExtraLight.otf</string>
+		<string>Silka-ExtraLightItalic.otf</string>
+		<string>Silka-Light.otf</string>
+		<string>Silka-LightItalic.otf</string>
+		<string>Silka-Medium.otf</string>
+		<string>Silka-MediumItalic.otf</string>
+		<string>Silka-Regular.otf</string>
+		<string>Silka-RegularItalic.otf</string>
+		<string>Silka-SemiBold.otf</string>
+		<string>Silka-SemiBoldItalic.otf</string>
+		<string>Silka-Thin.otf</string>
+		<string>Silka-ThinItalic.otf</string>
+		<string>Silka-Bold.ttf</string>
+		<string>Silka-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import {dataList} from './dataMock';
+import {dataList} from './mock/dataMock';
 import {Icon} from 'react-native-elements';
-import {styles} from './Themes/styles';
+import {styles} from './Themes/Styles';
+import Fonts from './Themes/Fonts';
 
 export default function AutoInvestmentsCarousel(props) {
   const [carousel, setCarousel] = useState(null);
@@ -84,7 +85,7 @@ export default function AutoInvestmentsCarousel(props) {
             position: 'absolute',
             bottom: 10,
             left: 10,
-            fontWeight: 'bold',
+            fontFamily: Fonts.type.silkaBold,
             color: renderActiveItem(index).foreColor,
           }}>
           {item.title}
@@ -94,15 +95,15 @@ export default function AutoInvestmentsCarousel(props) {
   };
 
   return (
-    <View style={{marginTop: 20}}>
+    <View style={{marginLeft: -212}}>
       <Carousel
         ref={(c) => {
           setCarousel(c);
         }}
         data={carouselItems}
         renderItem={renderItem}
-        sliderWidth={350}
-        itemWidth={180}
+        sliderWidth={610}
+        itemWidth={150}
         onSnapToItem={index => {
           if (index < carouselItems.length - 1) {
             setActiveIndex(index);

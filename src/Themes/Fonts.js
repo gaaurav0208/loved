@@ -15,6 +15,8 @@ const type = {
   mavenProMedium: 'MavenPro-Medium',
   openSansReg: 'OpenSans-Regular',
   openSansSemiBold: 'OpenSans-SemiBold',
+  silka: 'Silka',
+  silkaBold: 'Silka-Bold'
 }
 
 const size = {

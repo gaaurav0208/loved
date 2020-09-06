@@ -1,8 +1,9 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {styles} from './Themes/styles';
-import { NEXT_TRANSFER, PORTFOLIO_HEADING, BALANCE } from './Themes/Constants';
+import { NEXT_TRANSFER, PORTFOLIO_HEADING, BALANCE } from './Constants';
+import {styles} from './Themes/Styles';
+import Fonts from './Themes/Fonts';
 
 export default function AutoInvestmentsIndicators(props) {
   
@@ -13,7 +14,7 @@ export default function AutoInvestmentsIndicators(props) {
       <View style={styles.items}>
         <View style={styles.spaceBetween}>
           <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.title}>{item.amount}</Text>
+          <Text style={{...styles.title, ...styles.emphasize}}>{item.amount}</Text>
         </View>
 
         <View style={styles.spaceBetween}>
@@ -33,7 +34,7 @@ export default function AutoInvestmentsIndicators(props) {
         <View style={styles.spaceBetweenWithMarginTop}>
           <View
             style={styles.appleIcon}>
-            <Icon size={40} color="#ffffff" name="apple" type="font-awesome" />
+            <Icon size={30} color="#ffffff" name="apple" type="font-awesome" />
           </View>
 
           <View style={{flexDirection: 'column'}}>
@@ -43,7 +44,7 @@ export default function AutoInvestmentsIndicators(props) {
         </View>
 
         <View>
-          <Text style={styles.title}>{item.status}</Text>
+          <Text style={{...styles.title, ...styles.emphasize}}>{item.status}</Text>
         </View>
       </View>
     );
@@ -74,9 +75,9 @@ export default function AutoInvestmentsIndicators(props) {
       <Text
         style={{
           display: 'flex',
-          alignSelf: 'center',
+          alignSelf: 'flex-start',
           marginBottom: 10,
-          fontWeight: 'bold',
+          fontFamily: Fonts.type.silkaBold,
           fontSize: 17
         }}>
         {PORTFOLIO_HEADING} {props.item.title}

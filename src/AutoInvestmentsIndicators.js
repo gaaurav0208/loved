@@ -1,12 +1,20 @@
-import React, { useState, Fragment } from "react";
-import { SafeAreaView, StatusBar, Text, View, TouchableOpacity } from "react-native";
-import AnimatableProgressBar from "./AnimatableProgressBar";
-import {indicators} from './dataMock';
-import { Icon } from 'react-native-elements'
-import * as colors  from './Themes/Colors';
-import {styles} from './Themes/styles';
+import React, {useState, Fragment, useEffect} from 'react';
+import {
+  SafeAreaView,
+  StatusBar,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+import AnimatableProgressBar from './AnimatableProgressBar';
+import {Icon} from 'react-native-elements';
+import * as colors from './Themes/Colors';
+import {QUESTION, ANSWER, AGE_MAX, AGE_ZERO} from './Constants';
+import {styles} from './Themes/Styles';
+import {connect} from 'react-redux';
+import {getDataUsingSaga} from '../js/actions/index';
 
-export default function AutoInvestmentsIndicators() {
+function AutoInvestmentsIndicators(props) {
   const [showIndicators, setShowIndicators] = useState(true);
 
   const hideIndicators = () => {
@@ -14,24 +22,31 @@ export default function AutoInvestmentsIndicators() {
   };
 
   const getIndicatorBgColor = (index) => {
-    return index < indicators.length - 1 && index !== 0? 'gray' : '#1D1D1F';
+    return index < props.indicators.length - 1 && index !== 0
+      ? colors.default.automaticInvestment.subheading
+      : colors.default.automaticInvestment.black;
   };
+
+  useEffect(() => {
+    props.getDataUsingSaga('https://github.com/gaaurav0208/loved/blob/master/src/mock/indicators.json');
+  }, []);
 
   return (
     showIndicators && (
       <View style={styles.containerIndicator}>
         <View style={styles.header}>
           <View style={styles.textContent}>
-            <Text style={styles.emphasize}>Why invest automatically?</Text>
-            <Text style={{flexWrap: 'wrap'}}>
-              If someone invest $50 each month from age 0, today you could have
-              had $xx,xxx.
+            <Text style={styles.question}>{QUESTION}</Text>
+            <Text style={{flexWrap: 'wrap', fontFamily: 'Silka', fontSize: 19}}>
+              {ANSWER}
             </Text>
           </View>
-          <TouchableOpacity onPress={() => hideIndicators()}>
+          <TouchableOpacity
+            onPress={() => hideIndicators()}
+            style={styles.question}>
             <Icon
-              name='clear'
-              type='material'
+              name="clear"
+              type="material"
               color={colors.default.automaticInvestment.black}
             />
           </TouchableOpacity>
@@ -39,29 +54,29 @@ export default function AutoInvestmentsIndicators() {
         <View>
           <View>
             <Fragment>
-              <StatusBar barStyle='dark-content' />
+              <StatusBar barStyle="dark-content" />
               <SafeAreaView
                 style={{
                   flex: 1,
                   ...styles.spaceBetween,
-                  alignItems: 'flex-end'
-                }}
-              >
-                {indicators.map((item, index) => {
+                  alignItems: 'flex-end',
+                }}>
+                {props.indicators.map((item, index) => {
                   return (
                     <AnimatableProgressBar
                       current={item.current}
-                      maximum={item.maximum}
                       width={item.width}
-                      borderColor='transparent'
+                      borderColor="transparent"
                       height={20}
                       borderRadius={30}
                       borderWidth={2}
-                      foreColor={index !== 0 ? '#FFCC00' : '#1D1D1F'}
-                      minimum={item.minimum}
+                      foreColor={
+                        index !== 0
+                          ? colors.default.automaticInvestment.pageBg
+                          : colors.default.automaticInvestment.black
+                      }
                       backgroundColor={getIndicatorBgColor(index)}
-                      type='increase'
-                      textColor='white'
+                      textColor="white"
                       interval={500}
                     />
                   );
@@ -70,11 +85,21 @@ export default function AutoInvestmentsIndicators() {
             </Fragment>
           </View>
           <View style={styles.legends}>
-            <Text>Age 0</Text>
-            <Text>Age 35</Text>
+            <Text style={styles.emphasize}>{AGE_ZERO}</Text>
+            <Text style={styles.emphasize}>{AGE_MAX}</Text>
           </View>
         </View>
       </View>
     )
   );
+}
+
+const mapsStateToProps = (state) => {
+  return {
+    indicators: state.remoteIndicators.slice(0, 10),
+  };
 };
+
+export default connect(mapsStateToProps, {getDataUsingSaga})(
+  AutoInvestmentsIndicators,
+);
