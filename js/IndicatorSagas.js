@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import { DATA_LOADED } from "./constants/action-types";
 
-export function* indicatorSaga(action) {
+export default function* indicatorSaga(action) {
   try{
     const payload = yield call(getData, action.payload);
     yield put({type: DATA_LOADED, payload});

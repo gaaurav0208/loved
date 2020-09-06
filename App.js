@@ -15,7 +15,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import AutoInvestmentsIndicators from './js/components/AutoInvestmentsIndicators';
-// import AutoInvestmentsCarousel from './src/AutoInvestmentsCarousel';
+import AutoInvestmentsCarousel from './js/components/AutoInvestmentsCarousel';
 // import AutoInvestmentsSettings from './src/AutoInvestmentsSettings';
 // import {dataList} from './src/mock/dataMock';
 import {Icon} from 'react-native-elements';
@@ -26,8 +26,8 @@ import store from './js/index';
 console.error = (error) => error.apply;
 
 const App = () => {
-  // const [item, setItem] = useState(dataList[0]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  //const [item, setItem] = useState(dataList[0]);
+  const [activeUser, setActiveUser] = useState(null);
 
   return (
     <Provider store={store}>
@@ -40,14 +40,13 @@ const App = () => {
             <Text style={styles.pageHeading}>Auto-Investments</Text>
           </View>
           <AutoInvestmentsIndicators />
-          {/* <AutoInvestmentsCarousel
-          changeSettings={(index) => {
-            if (index !== activeIndex) {
-              setActiveIndex(index);
-              setItem(dataList[index]);
+          <AutoInvestmentsCarousel
+          changeSettings={(username) => {
+            if (username !== '') {
+              setActiveUser(username);
             }
           }}
-        /> */}
+        />
           {/* {item && <AutoInvestmentsSettings item={item} />} */}
         </ScrollView>
       </SafeAreaView>

@@ -1,28 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import {dataList} from './mock/dataMock';
 import {Icon} from 'react-native-elements';
-import {styles} from './Themes/Styles';
-import Fonts from './Themes/Fonts';
+import {styles} from '../Themes/Styles';
+import Fonts from '../Themes/Fonts';
 import {connect} from 'react-redux';
-import {getDataUsingSaga} from '../../js/actions/index';
+import {getUsersDataUsingSaga} from '../../js/actions/index';
 
 
 function AutoInvestmentsCarousel(props) {
   const [carousel, setCarousel] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const carouselItems = dataList;
 
   useEffect(() => {
-    props.getDataUsingSaga('https://raw.githubusercontent.com/gaaurav0208/loved/master/js/mocks/users.json');
+    props.getUsersDataUsingSaga('https://raw.githubusercontent.com/gaaurav0208/loved/master/js/mocks/users.json');
 
-    carouselItems.push({
+   /*  carouselItems.push({
       title: 'Add',
       type: 'empty',
-    });
+    });*/
   }, []);
-
+ 
   const renderActiveItem = (index) => {
     let bgColor = '#F2F2F2',
       foreColor = '#969DA5';
@@ -51,7 +49,7 @@ function AutoInvestmentsCarousel(props) {
   };
 
   const renderIcon = (index) => {
-    return index < dataList.length - 1 ? (
+    return index < props.users.length - 1 ? (
       <Icon
         name="user"
         type="font-awesome"
@@ -105,7 +103,7 @@ function AutoInvestmentsCarousel(props) {
         ref={(c) => {
           setCarousel(c);
         }}
-        data={users}
+        data={props.users}
         renderItem={renderItem}
         sliderWidth={610}
         itemWidth={150}
@@ -126,6 +124,6 @@ const mapsStateToProps = (state) => {
   };
 };
 
-export default connect(mapsStateToProps, {getDataUsingSaga})(
-  AutoInvestmentsIndicators,
+export default connect(mapsStateToProps, {getUsersDataUsingSaga})(
+  AutoInvestmentsCarousel,
 );

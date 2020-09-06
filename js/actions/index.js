@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, REMOVE_ARTICLE, DATA_REQUESTED } from "../constants/action-types";
+import { ADD_ARTICLE, REMOVE_ARTICLE, DATA_REQUESTED, USERS_DATA_REQUESTED } from "../constants/action-types";
 
 export function addArticle(payload) {
   return {type: ADD_ARTICLE, payload}
@@ -20,4 +20,8 @@ export function removeArticle(payload) {
 
 export function getDataUsingSaga(url) {
   return {type: DATA_REQUESTED, payload: url}
+}
+
+export function getUsersDataUsingSaga(url) {
+  return {type: USERS_DATA_REQUESTED, payload: url}
 }

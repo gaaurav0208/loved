@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
 import { USERS_DATA_LOADED } from "./constants/action-types";
 
-export function* usersSaga(action) {
+export default function* usersSaga(action) {
   try{
     const payload = yield call(getData, action.payload);
     yield put({type: USERS_DATA_LOADED, payload});
@@ -20,5 +20,5 @@ function getData(url) {
     'Content-Type': 'application/json;charset=utf-8'
   }
 })
- .then(response => response.json()).then((response => response.indicators));
+ .then(response => response.json()).then((response => response.data));
 }
