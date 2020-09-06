@@ -3,7 +3,7 @@ import rootReducer from "../reducers/index";
 // import thunk from "redux-thunk";
 import forbiddenWordsMiddleware from "../middleware";
 import createSagaMiddleware from "redux-saga";
-import apiSaga from "../sagas";
+import apiSaga from "../IndicatorSagas";
 
 const initialiseSagaMiddleware = createSagaMiddleware();
 

@@ -1,4 +1,5 @@
 import React, {useState, Fragment, useEffect} from 'react';
+import {connect} from 'react-redux';
 import {
   SafeAreaView,
   StatusBar,
@@ -6,13 +7,12 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import AnimatableProgressBar from './AnimatableProgressBar';
 import {Icon} from 'react-native-elements';
-import * as colors from './Themes/Colors';
-import {QUESTION, ANSWER, AGE_MAX, AGE_ZERO} from './Constants';
-import {styles} from './Themes/Styles';
-import {connect} from 'react-redux';
-import {getDataUsingSaga} from '../js/actions/index';
+import AnimatableProgressBar from './AnimatableProgressBar';
+import * as colors from '../Themes/Colors';
+import {QUESTION, ANSWER, AGE_MAX, AGE_ZERO} from '../Constants';
+import {getDataUsingSaga} from '../../js/actions/index';
+import {styles} from '../Themes/Styles';
 
 function AutoInvestmentsIndicators(props) {
   const [showIndicators, setShowIndicators] = useState(true);
@@ -28,7 +28,7 @@ function AutoInvestmentsIndicators(props) {
   };
 
   useEffect(() => {
-    props.getDataUsingSaga('https://github.com/gaaurav0208/loved/blob/master/src/mock/indicators.json');
+    props.getDataUsingSaga('https://raw.githubusercontent.com/gaaurav0208/loved/master/js/mock/indicators.json');
   }, []);
 
   return (

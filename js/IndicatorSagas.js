@@ -24,5 +24,5 @@ function getData(url) {
     'Content-Type': 'application/json;charset=utf-8'
   }
 })
- .then(response => response.json()).then((response => response));
+ .then(response => response.json()).then((response => response.indicators));
 }
